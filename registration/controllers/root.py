@@ -14,6 +14,8 @@ from registration.model.dal_interface import DalIntegrityError
 
 
 class RootController(TGController):
+    allow_only = predicates.is_anonymous('User already registered')
+    
     @expose('genshi:registration.templates.register')
     @expose('kajiki:registration.templates.register')
     def index(self, *args, **kw):
